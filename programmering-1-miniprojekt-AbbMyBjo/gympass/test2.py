@@ -1,35 +1,36 @@
 import random
 
 felmeddelande = "Något gick fel. Stänger av programmet."
-print("Välkommen till gympass-skaparen. Nedan kan du skriva vilka du har för krav på passet/passen jag ska göra åt dig.")
+# print("Välkommen till gympass-skaparen. Nedan kan du skriva vilka du har för krav på passet/passen jag ska göra åt dig.")
 
-a = input("Vill du fokusera på någon/några speciella delar av kroppen? ")
-if a == "ja":
-    a = input("Ange helkropp/överkropp/underkropp eller en/flera specifika kroppsdelar. \n")
-elif a == "nej":
-    a = "helkropp"
-else:
-    print(felmeddelande+"rad12")
+# a = input("Vill du fokusera på någon/några speciella delar av kroppen? ")
+# if a == "ja":
+#     a = input("Ange helkropp/överkropp/underkropp eller en/flera specifika kroppsdelar. \n")
+# elif a == "nej":
+#     a = "helkropp"
+# else:
+#     print(felmeddelande+"rad12")
+a = "underkropp"
+# b = input("Hur många pass vill du att jag ska göra? ")
+b = 5
+# try:
+#     b = int(b)
+# except:
+#     while 1:
+#         print("Ange ett giltigt nummer.")
+#         b = input("Hur många pass vill du att jag ska göra? ")
+#         try:
+#             b = int(b)
+#             break
+#         except:
+#             continue
 
-b = input("Hur många pass vill du att jag ska göra? ")
-
-try:
-    b = int(b)
-except:
-    while 1:
-        print("Ange ett giltigt nummer.")
-        b = input("Hur många pass vill du att jag ska göra? ")
-        try:
-            b = int(b)
-            break
-        except:
-            continue
-
-if b == 1:
-    d = input("Hur hårt ska passet vara? Välj mellan väldigt lätt, lätt, medel och intensivt. ")
-elif b > 1:
-    d = input("Hur hårda ska passen vara? Välj mellan väldigt lätt, lätt, medel och intensivt. ")
-    #e = input("Ska jag göra ett veckoschema för passen? ")
+# if b == 1:
+#     d = input("Hur hårt ska passet vara? Välj mellan väldigt lätt, lätt, medel och intensivt. ")
+# elif b > 1:
+#     d = input("Hur hårda ska passen vara? Välj mellan väldigt lätt, lätt, medel och intensivt. ")
+#     #e = input("Ska jag göra ett veckoschema för passen? ")
+d = "medel"
 
 Gymövningar = [
         {"namn": "biceps", "övningar":["skivstångscurl", "hantelcurl", "hammercurl", "pullups", "preacher curls", "sittande bicepscurls"]},
@@ -38,10 +39,12 @@ Gymövningar = [
         {"namn": "triceps", "övningar":["dips", "sittande dips", "skullcrushers", "triceps pushdown", "smal bänkpress"]},
         {"namn": "rygg", "övningar":["marklyft", "hyperextension", "pullups", "latsdrag", "hantelrodd", "rygglyft", "stångrodd"]},
         {"namn": "axlar", "övningar":["axelpress skivstång", "axelpress hantlar", "arnoldpress", "sidolyft", "face pull", "pullups"]},
-        {"namn": "lår", "övningar":["backsquats", "frontsquats", "jumping squats", "utfallssteg", "höftlyft", "benpress", "bensträck", "bencurls", "höftabduktion"]},
-        {"namn": "rumpa", "övningar":["jumping squats", "squats", "höftlyft", "utfallssteg", "rumplyft", "flutter kicks"]}]
-Uppvärmning = ["burpees", "kettlebell swingar", "hopprep", "löpband", "trappmaskin", "crosstrainer", "cykel"]
-Intensivt =["armhävningar", "plankan", "thrusters", "man-makers", "kettlebell swingar"]
+        {"namn": "lår", "övningar":["backsquats", "nordic hamstring curl", "frontsquats", "jumping squats", "utfallssteg", "höftlyft", "benpress", "bensträck", "bencurls", "höftabduktion"]},
+        {"namn": "rumpa", "övningar":["jumping squats", "squats", "höftlyft", "utfallssteg", "rumplyft", "flutter kicks", "sumo marklyft", "backsquats", "frontsquats"]}]
+        
+Uppvärmning = ["burpees", "kettlebell swingar", "hopprep", "löpband", "trappmaskin", "crosstrainer", "cykel", "SkiErg", "rodd"]
+Kondition = ["kettlebell swingar", "hopprep", "löpband", "trappmaskin", "crosstrainer", "cykel", "SkiErg", "rodd"]
+Intensivt =["burpees", "armhävningar", "plankan", "thrusters", "man-makers", "kettlebell swingar", "box jumps", "jägarvila", "toe to bar"]
 
 flera_pass = [ ]
 
@@ -49,7 +52,7 @@ i = 0
 counter = 1
 
 while counter <= b:
-    i=0
+    i = 0
     x = 0
     y = 0
 
@@ -167,21 +170,28 @@ while counter <= b:
     elif a == "underkropp":
         print("168")
         while i <= 6:
-            a = random.randrange(0, len(Gymövningar[i]["övningar"]))
+            a = random.randrange(0, len(Gymövningar[6]["övningar"]))
+            b = random.randrange(0, len(Gymövningar[7]["övningar"]))
             gympass_siffror.append(a)
             i += 1
+            gympass_siffror.append(b)
+            i += 1
+            print(gympass_siffror)
 
         x = 0
-        y = 0
-
+        i = 0
         gympass_bokstäver = []
 
-        for saker in gympass_siffror:
+        while i <= len(gympass_siffror):
             plats = (gympass_siffror[x])
-            övning = Gymövningar[y]["övningar"][plats]
+            övning = Gymövningar[6]["övningar"][plats]
+            övning2 = Gymövningar[7]["övningar"][plats]
             x+=1
-            y+=1
+            # övning = Gymövningar[7]["övningar"][plats]
+            # x+=1
             gympass_bokstäver.append(övning)
+            gympass_bokstäver.append(övning2)
+
         print("176")
 
         if d == "lätt":
